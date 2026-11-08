@@ -110,3 +110,4 @@ class OrderServiceKafkaTest {
         assertEquals(2, event.getItems().get(0).getQuantity());
     }
 }
+

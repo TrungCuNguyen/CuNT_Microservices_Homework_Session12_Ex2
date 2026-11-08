@@ -39,3 +39,4 @@ public class OrderCreatedEvent implements Serializable {
         private BigDecimal price;
     }
 }
+

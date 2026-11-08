@@ -72,3 +72,4 @@ class EmailConsumerKafkaTest {
         verify(emailConsumer, timeout(10000)).handleOrderCreatedEvent(any(OrderCreatedEvent.class), any(), any());
     }
 }
+

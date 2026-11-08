@@ -92,3 +92,4 @@ class InventoryConsumerKafkaTest {
         assertEquals(45, updatedStock.getQuantity());
     }
 }
+

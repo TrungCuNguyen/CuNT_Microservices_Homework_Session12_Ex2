@@ -26,3 +26,4 @@ public class OrderItemRequestDTO {
     @Positive(message = "Giá phải lớn hơn 0")
     private BigDecimal price;
 }
+

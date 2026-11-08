@@ -28,3 +28,4 @@ public class InventoryController {
                 .orElse(ResponseEntity.notFound().build());
     }
 }
+
