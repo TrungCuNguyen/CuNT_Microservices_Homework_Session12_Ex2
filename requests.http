@@ -1,0 +1,43 @@
+### 1. Lấy chi tiết sản phẩm ID 1 - Lần đầu (Cache Miss -> Đọc DB ~200ms)
+GET http://localhost:8081/api/v1/products/1
+Accept: application/json
+
+### 2. Lấy chi tiết sản phẩm ID 1 - Lần hai (Cache Hit -> Đọc Redis < 10ms)
+GET http://localhost:8081/api/v1/products/1
+Accept: application/json
+
+### 3. Cập nhật sản phẩm ID 1 -> Kích hoạt @CacheEvict (Xóa Cache trong Redis)
+PUT http://localhost:8081/api/v1/products/1
+Content-Type: application/json
+
+{
+  "name": "iPhone 16 Pro Max 512GB (Updated)",
+  "description": "Bản nâng cấp dung lượng 512GB với chip A18 Pro mạnh mẽ.",
+  "imageUrl": "https://cdn.example.com/images/iphone-16-pro-max-512.png",
+  "price": 38990000,
+  "stockQuantity": 35
+}
+
+### 4. Lấy lại chi tiết sản phẩm ID 1 sau khi update (Cache Miss -> Đọc DB mới & Nạp lại Cache)
+GET http://localhost:8081/api/v1/products/1
+Accept: application/json
+
+### 5. Lấy danh sách tất cả sản phẩm
+GET http://localhost:8081/api/v1/products
+Accept: application/json
+
+### 6. Tạo mới một sản phẩm
+POST http://localhost:8081/api/v1/products
+Content-Type: application/json
+
+{
+  "name": "Sony WH-1000XM5",
+  "description": "Tai nghe chống ồn hàng đầu thế giới với chất âm cao cấp.",
+  "imageUrl": "https://cdn.example.com/images/sony-xm5.png",
+  "price": 7990000,
+  "stockQuantity": 60
+}
+
+### 7. Xóa sản phẩm ID 3 -> Kích hoạt @CacheEvict
+DELETE http://localhost:8081/api/v1/products/3
+Accept: application/json
