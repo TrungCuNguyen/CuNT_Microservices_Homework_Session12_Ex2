@@ -1,4 +1,6 @@
 rootProject.name = 'ex_ss12_micro'
 
 include 'product-service'
-
+include 'order-service'
+include 'email-service'
+include 'inventory-service'
